@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:milk_delivery_flutter/components/default_button.dart';
 import 'package:milk_delivery_flutter/constants.dart';
 import 'package:milk_delivery_flutter/screens/splash/components/splash_content.dart';
+import 'package:milk_delivery_flutter/screens/splash/models/api.dart';
+import 'package:milk_delivery_flutter/screens/splash/models/models.dart';
 import 'package:milk_delivery_flutter/size_config.dart';
 
 class Body extends StatefulWidget {
@@ -10,6 +12,8 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
+  late Future<Album> futureAlbum;
+
   int currentPage = 0;
 
   List<Map<String, String>> splashData = [
@@ -23,51 +27,63 @@ class _BodyState extends State<Body> {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: SizedBox(
-        width: double.infinity,
-        child: Column(
-          children: [
-            Expanded(
-                flex: 3,
-                child: PageView.builder(
-                    onPageChanged: (value) {
-                      setState(() {
-                        currentPage = value;
-                      });
-                    },
-                    itemCount: splashData.length,
-                    itemBuilder: (context, index) => SplashContent(
-                          image: "assets/images/splash_1.png",
-                          text: "Welcome to Apzie, let`s start Shopping",
-                        ))),
-            Expanded(
-              flex: 2,
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: getProportionateScreenWidth(20)),
-                child: Column(children: [
-                  Spacer(),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: List.generate(
-                        splashData.length, (index) => buildDot(index: index)),
-                  ),
-                  Spacer(
-                    flex: 3,
-                  ),
-                  DefaultButton(
-                    text: "Continue",
-                    press: () {},
-                  ),
-                  Spacer(),
-                ]),
+    futureAlbum = fetchAlbum();
+
+    return FutureBuilder<Album>(
+        future: futureAlbum,
+        builder: (context, snapshot) {
+          var image = Image.network(snapshot.data!.image_1url);
+          if (snapshot.hasData) {
+            return SafeArea(
+              child: SizedBox(
+                width: double.infinity,
+                child: Column(
+                  children: [
+                    Expanded(
+                        flex: 3,
+                        child: PageView.builder(
+                            onPageChanged: (value) {
+                              setState(() {
+                                currentPage = value;
+                              });
+                            },
+                            itemCount: splashData.length,
+                            itemBuilder: (context, index) => SplashContent(
+                                  image: "assets/images/splash_1.png",
+                                  text: snapshot.data!.subText1,
+                                ))),
+                    Expanded(
+                      flex: 2,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                            horizontal: getProportionateScreenWidth(20)),
+                        child: Column(children: [
+                          Spacer(),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: List.generate(splashData.length,
+                                (index) => buildDot(index: index)),
+                          ),
+                          Spacer(
+                            flex: 3,
+                          ),
+                          DefaultButton(
+                            text: (snapshot.data!.btnText3),
+                            press: () {},
+                          ),
+                          Spacer(),
+                        ]),
+                      ),
+                    )
+                  ],
+                ),
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            );
+          } else if (snapshot.hasError) {
+            return Text("${snapshot.error}");
+          }
+          return CircularProgressIndicator();
+        });
   }
 
   AnimatedContainer buildDot({required int index}) {

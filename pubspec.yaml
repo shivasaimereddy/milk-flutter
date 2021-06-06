@@ -12,11 +12,24 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  dio: ^4.0.0
+  http: ^0.13.3
+  provider: ^5.0.0
 
   cupertino_icons: ^1.0.2
   flutter_svg: ^0.17.4
-  provider: ^4.3.1
+
+  line_awesome_flutter: ^1.0.1
+  animated_theme_switcher: ^2.0.1  
+  flutter_screenutil: ^5.0.0+2
+
+  bloc: ^4.0.0
+  rxdart: ^0.24.0
+  equatable: ^1.1.1
+  introduction_screen: ^1.0.9
+  eva_icons_flutter: ^2.0.0
+
+
 
 dev_dependencies:
   flutter_test:
