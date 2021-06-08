@@ -1,65 +1,47 @@
-import 'package:flutter/material.dart';
-
 class Product {
-  final int id;
-  final String title, description, quantity;
-  final List<String> images;
-  final double price;
+  Product({
+    required this.id,
+    required this.name,
+    this.image,
+    required this.imageUrl,
+    required this.brand,
+    required this.description,
+    required this.price,
+    required this.quantity,
+    required this.countInStock,
+    required this.createdAt,
+    required this.createdBy,
+    required this.updatedBy,
+    required this.category,
+  });
 
-  Product(
-      {required this.id,
-      required this.images,
-      required this.title,
-      required this.price,
-      required this.description,
-      required this.quantity});
+  int id;
+  String name;
+  dynamic image;
+  String imageUrl;
+  String brand;
+  String description;
+  String price;
+  int quantity;
+  int countInStock;
+  DateTime createdAt;
+  int createdBy;
+  int updatedBy;
+  int category;
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+        id: json["id"],
+        name: json["name"],
+        image: json["image"],
+        imageUrl: json["image_url"],
+        brand: json["brand"],
+        description: json["description"],
+        price: json["price"],
+        quantity: json["quantity"],
+        countInStock: json["countInStock"],
+        createdAt: DateTime.parse(json["createdAt"]),
+        createdBy: json["createdBy"],
+        updatedBy: json["updatedBy"],
+        category: json["category"],
+      );
 }
-
-// Our demo Products
-
-List<Product> products = [
-  Product(
-    id: 1,
-    images: [
-      "assets/images/milkpacket.jpg",
-      "assets/images/milkbottle.jpg",
-      "assets/images/milkglass.png",
-    ],
-    title: "Organic Buffalo Milk",
-    quantity: "500Ml",
-    price: 69.99,
-    description: description,
-  ),
-  Product(
-    id: 2,
-    images: [
-      "assets/images/Curd.png",
-    ],
-    title: "Organic Buffalo Curd",
-    quantity: "500Ml",
-    price: 50.5,
-    description: description,
-  ),
-  Product(
-    id: 3,
-    images: [
-      "assets/images/ghee.jpg",
-    ],
-    title: "Organic Cow Ghee",
-    quantity: "500Ml",
-    price: 36.55,
-    description: description,
-  ),
-  Product(
-    id: 4,
-    images: [
-      "assets/images/paneer.jpg",
-    ],
-    title: "Paneer",
-    quantity: "500Ml",
-    price: 20.20,
-    description: description,
-  ),
-];
-
-const String description = "Milk,Ghee,Curd,Paneer";
