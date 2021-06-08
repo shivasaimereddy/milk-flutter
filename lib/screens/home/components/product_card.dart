@@ -4,23 +4,33 @@ import 'package:milk_delivery_flutter/models/Product.dart';
 import '../../../constants.dart';
 import '../../../size_config.dart';
 
-class ProductCard extends StatelessWidget {
+class ProductCard extends StatefulWidget {
   const ProductCard({
     Key? key,
     this.width = 150,
     this.aspectRation = 1.02,
-    required this.product,
+    required this.productName,
+    required this.image,
+    required this.price,
+    required this.description,
+    required this.quantity,
   }) : super(key: key);
 
   final double width, aspectRation;
-  final Product product;
+  final String productName, image, price, description;
+  final int quantity;
 
+  @override
+  _ProductCardState createState() => _ProductCardState();
+}
+
+class _ProductCardState extends State<ProductCard> {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(getProportionateScreenWidth(10)),
       child: SizedBox(
-        width: getProportionateScreenWidth(width),
+        width: getProportionateScreenWidth(widget.width),
         //height: getProportionateScreenHeight(300),
         child: Container(
           padding: EdgeInsets.all(10),
@@ -31,20 +41,20 @@ class ProductCard extends StatelessWidget {
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             AspectRatio(
-              aspectRatio: aspectRation,
+              aspectRatio: widget.aspectRation,
               child: Container(
                 decoration: BoxDecoration(
                   //color: kSecondaryColor.withOpacity(0.1),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                child: Image.asset(product.images[0]),
+                child: Image.network(widget.image),
               ),
             ),
             SizedBox(
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              product.title,
+              widget.productName,
               style: TextStyle(
                   color: Colors.black,
                   fontSize: getProportionateScreenWidth(16)),
@@ -54,7 +64,7 @@ class ProductCard extends StatelessWidget {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              product.quantity,
+              "${widget.quantity.toString()} ml",
               style: TextStyle(
                   fontSize: getProportionateScreenWidth(12),
                   fontWeight: FontWeight.w400),
@@ -63,7 +73,7 @@ class ProductCard extends StatelessWidget {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              "₹${product.price}",
+              "₹${widget.price}",
               style: TextStyle(
                   color: kPrimaryColor,
                   fontSize: getProportionateScreenWidth(16),
