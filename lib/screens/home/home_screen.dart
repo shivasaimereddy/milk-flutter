@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:milk_delivery_flutter/api/Category.dart';
 import 'package:milk_delivery_flutter/components/custom_bottom_nav_bar.dart';
 import 'package:milk_delivery_flutter/enums.dart';
 import 'package:milk_delivery_flutter/screens/home/components/categories.dart';
@@ -104,22 +105,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SliverFillRemaining(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        SearchWithNameAndWallet(),
-                        SizedBox(height: getProportionateScreenHeight(20)),
-                        Categories(),
-                        SizedBox(height: getProportionateScreenHeight(10)),
-                        SectionTitle(
-                            text: "Special for you", press: () {}, seeMore: ""),
-                        SizedBox(height: getProportionateScreenHeight(10)),
-                        SpecialOffer(),
-                        SizedBox(height: getProportionateScreenHeight(20)),
-                        SizedBox(height: getProportionateScreenHeight(20)),
-                        PopularProducts(),
-                        SizedBox(height: getProportionateScreenHeight(20)),
-                      ],
+                  child: RefreshIndicator(
+                    onRefresh: fetchCategories,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          SearchWithNameAndWallet(),
+                          SizedBox(height: getProportionateScreenHeight(20)),
+                          Categories(),
+                          SizedBox(height: getProportionateScreenHeight(10)),
+                          SectionTitle(
+                              text: "Special for you",
+                              press: () {},
+                              seeMore: ""),
+                          SizedBox(height: getProportionateScreenHeight(10)),
+                          SpecialOffer(),
+                          SizedBox(height: getProportionateScreenHeight(20)),
+                          SizedBox(height: getProportionateScreenHeight(20)),
+                          PopularProducts(),
+                          SizedBox(height: getProportionateScreenHeight(20)),
+                        ],
+                      ),
                     ),
                   ),
                 )
