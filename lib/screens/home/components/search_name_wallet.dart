@@ -33,7 +33,7 @@ class SearchWithNameAndWallet extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hi Venkat,",
+                      "Welcome",
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
@@ -78,7 +78,7 @@ class SearchWithNameAndWallet extends StatelessWidget {
                     Expanded(
                       child: TextField(
                         decoration: InputDecoration(
-                          hintText: "Search",
+                          hintText: "Search Products",
                           hintStyle: TextStyle(color: kPrimaryColor),
                           enabledBorder: InputBorder.none,
                           focusedBorder: InputBorder.none,
