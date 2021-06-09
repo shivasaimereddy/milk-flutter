@@ -16,7 +16,7 @@ class _CategoriesState extends State<Categories> {
   @override
   void initState() {
     super.initState();
-    futureData = fetchData();
+    futureData = fetchCategories();
   }
 
   @override
