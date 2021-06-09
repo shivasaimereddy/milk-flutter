@@ -5,11 +5,11 @@ import '../size_config.dart';
 
 class DefaultButton extends StatelessWidget {
   const DefaultButton({
-    required Key key,
-    required this.text,
+    Key? key,
+    required this.btnText,
     required this.press,
   }) : super(key: key);
-  final String text;
+  final String btnText;
   final Function()? press;
 
   @override
@@ -20,13 +20,13 @@ class DefaultButton extends StatelessWidget {
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: kPrimaryColor,
-          padding: EdgeInsets.all(20),
+          padding: EdgeInsets.all(5),
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
         ),
         onPressed: press,
         child: Text(
-          text,
+          btnText,
           style: TextStyle(
             fontSize: getProportionateScreenWidth(18),
             color: Colors.white,
