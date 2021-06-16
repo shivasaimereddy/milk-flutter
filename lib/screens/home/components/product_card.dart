@@ -14,10 +14,11 @@ class ProductCard extends StatefulWidget {
     required this.price,
     required this.description,
     required this.quantity,
+    required this.quantityType,
   }) : super(key: key);
 
   final double width, aspectRation;
-  final String productName, image, price, description;
+  final String productName, image, price, description, quantityType;
   final int quantity;
 
   @override
@@ -64,7 +65,7 @@ class _ProductCardState extends State<ProductCard> {
               height: getProportionateScreenHeight(5),
             ),
             Text(
-              "${widget.quantity.toString()} ml",
+              "${widget.quantity} ${widget.quantityType}",
               style: TextStyle(
                   fontSize: getProportionateScreenWidth(12),
                   fontWeight: FontWeight.w400),
