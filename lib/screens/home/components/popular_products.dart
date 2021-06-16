@@ -44,10 +44,11 @@ class _PopularProductsState extends State<PopularProducts> {
                           data!.length,
                           (index) => ProductCard(
                             productName: data[index].name,
-                            image: data[index].imageUrl,
+                            image: data[index].imageUrl[0],
                             description: data[index].description,
                             price: data[index].price,
                             quantity: data[index].quantity,
+                            quantityType: data[index].quantityType.type,
                           ),
                         ),
                       ],
