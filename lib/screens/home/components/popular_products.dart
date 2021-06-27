@@ -3,6 +3,7 @@ import 'package:milk_delivery_flutter/api/Product.dart';
 import 'package:milk_delivery_flutter/models/Product.dart';
 import 'package:milk_delivery_flutter/screens/home/components/product_card.dart';
 import 'package:milk_delivery_flutter/screens/home/components/section_title.dart';
+import 'package:milk_delivery_flutter/screens/productDetails/product_details_screen.dart';
 
 class PopularProducts extends StatefulWidget {
   const PopularProducts({
@@ -49,6 +50,19 @@ class _PopularProductsState extends State<PopularProducts> {
                             price: data[index].price,
                             quantity: data[index].quantity,
                             quantityType: data[index].quantityType.type,
+                            hasPlan: data[index].hasPlan,
+                            press: () => {
+                              Navigator.pushNamed(
+                                  context, ProductDetailsScreen.routeName,
+                                  arguments: ProductDetailsArguments(
+                                    productName: data[index].name,
+                                    image: data[index].imageUrl,
+                                    description: data[index].description,
+                                    price: data[index].price,
+                                    quantity: data[index].quantity,
+                                    hasPlan: data[index].hasPlan,
+                                  ))
+                            },
                           ),
                         ),
                       ],
