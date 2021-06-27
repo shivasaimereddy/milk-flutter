@@ -14,6 +14,7 @@ class Product {
     required this.createdBy,
     required this.updatedBy,
     required this.category,
+    required this.hasPlan,
   });
 
   int id;
@@ -30,6 +31,7 @@ class Product {
   DateTime createdAt;
   int createdBy;
   int updatedBy;
+  bool hasPlan;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
         id: json["id"],
@@ -46,6 +48,7 @@ class Product {
         createdAt: DateTime.parse(json["createdAt"]),
         createdBy: json["createdBy"],
         updatedBy: json["updatedBy"],
+        hasPlan: json["hasPlan"],
       );
 }
 
