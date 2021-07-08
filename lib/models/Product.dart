@@ -11,8 +11,8 @@ class Product {
     required this.quantity,
     required this.countInStock,
     required this.createdAt,
-    required this.createdBy,
-    required this.updatedBy,
+    // required this.createdBy,
+    // required this.updatedBy,
     required this.category,
     required this.hasPlan,
   });
@@ -29,8 +29,8 @@ class Product {
   int quantity;
   int countInStock;
   DateTime createdAt;
-  int createdBy;
-  int updatedBy;
+  // int createdBy;
+  // int updatedBy;
   bool hasPlan;
 
   factory Product.fromJson(Map<String, dynamic> json) => Product(
@@ -46,8 +46,8 @@ class Product {
         quantity: json["quantity"],
         countInStock: json["countInStock"],
         createdAt: DateTime.parse(json["createdAt"]),
-        createdBy: json["createdBy"],
-        updatedBy: json["updatedBy"],
+        // createdBy: json["createdBy"],
+        // updatedBy: json["updatedBy"],
         hasPlan: json["hasPlan"],
       );
 }
@@ -59,8 +59,8 @@ class Category {
     required this.description,
     this.image,
     required this.imageUrl,
-    required this.createdBy,
-    required this.updatedBy,
+    // required this.createdBy,
+    // required this.updatedBy,
   });
 
   int id;
@@ -68,8 +68,8 @@ class Category {
   String description;
   dynamic image;
   String imageUrl;
-  int createdBy;
-  int updatedBy;
+  // int createdBy;
+  // int updatedBy;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
@@ -77,8 +77,8 @@ class Category {
         description: json["description"],
         image: json["image"],
         imageUrl: json["image_url"],
-        createdBy: json["createdBy"],
-        updatedBy: json["updatedBy"],
+        // createdBy: json["createdBy"],
+        // updatedBy: json["updatedBy"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -87,8 +87,8 @@ class Category {
         "description": description,
         "image": image,
         "image_url": imageUrl,
-        "createdBy": createdBy,
-        "updatedBy": updatedBy,
+        // "createdBy": createdBy,
+        // "updatedBy": updatedBy,
       };
 }
 
@@ -96,26 +96,26 @@ class QuantityType {
   QuantityType({
     required this.id,
     required this.type,
-    required this.createdBy,
-    this.updatedBy,
+    // required this.createdBy,
+    // this.updatedBy,
   });
 
   int id;
   String type;
-  int createdBy;
-  dynamic updatedBy;
+  // int createdBy;
+  // dynamic updatedBy;
 
   factory QuantityType.fromJson(Map<String, dynamic> json) => QuantityType(
         id: json["id"],
         type: json["type"],
-        createdBy: json["createdBy"],
-        updatedBy: json["updatedBy"],
+        // createdBy: json["createdBy"],
+        // updatedBy: json["updatedBy"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "type": type,
-        "createdBy": createdBy,
-        "updatedBy": updatedBy,
+        // "createdBy": createdBy,
+        // "updatedBy": updatedBy,
       };
 }

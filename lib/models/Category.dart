@@ -5,8 +5,8 @@ class Category {
     required this.description,
     this.image,
     required this.imageUrl,
-    required this.createdBy,
-    required this.updatedBy,
+    // required this.createdBy,
+    // required this.updatedBy,
   });
 
   int id;
@@ -14,8 +14,8 @@ class Category {
   String description;
   dynamic image;
   String imageUrl;
-  int createdBy;
-  int updatedBy;
+  // int createdBy;
+  // int updatedBy;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
         id: json["id"],
@@ -23,7 +23,7 @@ class Category {
         description: json["description"],
         image: json["image"],
         imageUrl: json["image_url"],
-        createdBy: json["createdBy"],
-        updatedBy: json["updatedBy"],
+        // createdBy: json["createdBy"],
+        // updatedBy: json["updatedBy"],
       );
 }
