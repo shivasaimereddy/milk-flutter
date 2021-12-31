@@ -5,6 +5,7 @@ import 'package:milk_delivery_flutter/components/custom_bottom_nav_bar.dart';
 import 'package:milk_delivery_flutter/enums.dart';
 import 'package:milk_delivery_flutter/screens/home/components/categories.dart';
 import 'package:milk_delivery_flutter/screens/home/drawer_screen.dart';
+import 'package:milk_delivery_flutter/screens/login/sign_in_screen.dart';
 import 'package:milk_delivery_flutter/size_config.dart';
 
 import '../../constants.dart';
@@ -12,6 +13,8 @@ import 'components/carousel.dart';
 import 'components/popular_products.dart';
 import 'components/search_name_wallet.dart';
 import 'components/section_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 //import '../../size_config.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,6 +30,22 @@ class _HomeScreenState extends State<HomeScreen> {
 
   bool isDrawOpen = false;
   bool isBottomNavOpen = true;
+
+  late SharedPreferences? sharedPreferences;
+
+  @override
+  void initState() {
+    super.initState();
+    getSharedPreferences();
+  }
+
+  void getSharedPreferences() {
+    SharedPreferences.getInstance().then((prefs) {
+      setState(() {
+        sharedPreferences = prefs;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -94,10 +113,21 @@ class _HomeScreenState extends State<HomeScreen> {
                           Container(
                             padding: EdgeInsets.only(
                                 right: getProportionateScreenWidth(20)),
-                            child: SvgPicture.asset(
-                              "assets/icons/shopping_cart.svg",
-                              width: getProportionateScreenWidth(30),
-                              height: getProportionateScreenHeight(30),
+                            child: ElevatedButton(
+                              onPressed: () {
+                                sharedPreferences!.clear();
+                                sharedPreferences!.commit();
+                                Navigator.of(context).pushAndRemoveUntil(
+                                    MaterialPageRoute(
+                                        builder: (BuildContext context) =>
+                                            SignInScreen()),
+                                    (Route<dynamic> route) => false);
+                              },
+                              child: SvgPicture.asset(
+                                "assets/icons/shopping_cart.svg",
+                                width: getProportionateScreenWidth(30),
+                                height: getProportionateScreenHeight(30),
+                              ),
                             ),
                           )
                         ],

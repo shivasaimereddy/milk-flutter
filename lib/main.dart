@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:milk_delivery_flutter/routes.dart';
+import 'package:milk_delivery_flutter/screens/login/sign_in_screen.dart';
 import 'package:milk_delivery_flutter/screens/splash/splash_screen.dart';
 import 'package:milk_delivery_flutter/theme.dart';
 
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: theme(),
-      initialRoute: SplashScreen.routeName,
+      initialRoute: SignInScreen.routeName,
       routes: routes,
     );
   }
