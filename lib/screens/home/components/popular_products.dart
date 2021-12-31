@@ -49,7 +49,7 @@ class _PopularProductsState extends State<PopularProducts> {
                             description: data[index].description,
                             price: data[index].price,
                             quantity: data[index].quantity,
-                            quantityType: data[index].quantityType.type,
+                            quantityType: data[index].quantityType,
                             hasPlan: data[index].hasPlan,
                             press: () => {
                               Navigator.pushNamed(

@@ -42,7 +42,7 @@ class _CategoriesState extends State<Categories> {
                           data!.length,
                           (index) => CategoryCard(
                               iconPath: data[index].imageUrl,
-                              name: data[index].categoryName,
+                              name: data[index].name,
                               press: () {}))
                     ],
                   ),

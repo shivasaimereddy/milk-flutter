@@ -30,15 +30,15 @@ class OnBoarding {
   factory OnBoarding.fromJson(Map<String, dynamic> json) => OnBoarding(
         id: json["id"],
         name: json["name"],
-        headingText: json["headingText"],
-        subText: json["subText"],
-        btnText: json["btnText"],
+        headingText: json["heading_text"],
+        subText: json["sub_text"],
+        btnText: json["btn_text"],
         image: json["image"],
         imageUrl: json["image_url"],
-        backgroundColor: json["backgroundColor"],
-        headingTextColor: json["headingTextColor"],
-        subTextColor: json["subTextColor"],
-        btnColor: json["btnColor"],
-        btnTextColor: json["btnTextColor"],
+        backgroundColor: json["background_color"],
+        headingTextColor: json["heading_text_color"],
+        subTextColor: json["sub_text_color"],
+        btnColor: json["btn_color"],
+        btnTextColor: json["btn_text_color"],
       );
 }

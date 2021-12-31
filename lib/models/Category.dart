@@ -1,29 +1,23 @@
 class Category {
   Category({
-    required this.id,
-    required this.categoryName,
-    required this.description,
-    this.image,
+    required this.cid,
+    required this.name,
+    // required this.image,
     required this.imageUrl,
-    // required this.createdBy,
-    // required this.updatedBy,
+    required this.description,
   });
 
-  int id;
-  String categoryName;
-  String description;
-  dynamic image;
+  int cid;
+  String name;
+  // String image;
   String imageUrl;
-  // int createdBy;
-  // int updatedBy;
+  String description;
 
   factory Category.fromJson(Map<String, dynamic> json) => Category(
-        id: json["id"],
-        categoryName: json["categoryName"],
-        description: json["description"],
-        image: json["image"],
+        cid: json["cid"],
+        name: json["name"],
+        // image: json["image"] == null ? null : json["image"],
         imageUrl: json["image_url"],
-        // createdBy: json["createdBy"],
-        // updatedBy: json["updatedBy"],
+        description: json["description"],
       );
 }
